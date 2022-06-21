@@ -122,21 +122,25 @@ class KakaoShareLinkModule(private val reactContext: ReactApplicationContext) : 
     } else {
       // 카카오톡 미설치: 웹 공유 사용 권장
       // 웹 공유 예시 코드
-      val sharerUrl = WebSharerClient.instance.defaultTemplateUri(template, serverCallbackArgs)
+      // 220615 카카오톡이 설치되지않은 android 에서 앱꺼짐 현상이 발생
+      Toast.makeText(reactContext, "카카오톡이 설치되어있지 않습니다.", Toast.LENGTH_SHORT).show()
 
-      // 1. CustomTabs으로 Chrome 브라우저 열기
-      try {
-        KakaoCustomTabsClient.openWithDefault(reactContext, sharerUrl)
-      } catch (e: UnsupportedOperationException) {
-        // 2. CustomTabs으로 디바이스 기본 브라우저 열기
-        try {
-          KakaoCustomTabsClient.open(reactContext, sharerUrl)
-        } catch (e: ActivityNotFoundException) {
-          // 인터넷 브라우저가 없을 때 예외처리
-          promise.reject("E_KAKAO_NO_BROWSER", e.message, e)
-        }
-      }
-
+      // // 카카오톡 미설치: 웹 공유 사용 권장
+      // // 웹 공유 예시 코드
+      // val sharerUrl = WebSharerClient.instance.defaultTemplateUri(template, serverCallbackArgs)
+      // Log.d("kakaotalk installed sharerUrl", sharerUrl.toString())
+      // // 1. CustomTabs으로 Chrome 브라우저 열기
+      // try {
+      //  KakaoCustomTabsClient.openWithDefault(reactContext, sharerUrl)
+      // } catch (e: UnsupportedOperationException) {
+      // // 2. CustomTabs으로 디바이스 기본 브라우저 열기
+      //  try {
+      //    KakaoCustomTabsClient.open(reactContext, sharerUrl)
+      //  } catch (e: ActivityNotFoundException) {
+      // // 인터넷 브라우저가 없을 때 예외처리
+      //    promise.reject("E_KAKAO_NO_BROWSER", e.message, e)
+      //  }
+      // }
     }
   }
 
