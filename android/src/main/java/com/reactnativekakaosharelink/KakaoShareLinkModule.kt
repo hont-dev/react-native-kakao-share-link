@@ -7,6 +7,7 @@ import com.kakao.sdk.common.util.KakaoCustomTabsClient
 import com.kakao.sdk.link.LinkClient
 import com.kakao.sdk.link.WebSharerClient
 import com.kakao.sdk.template.model.*
+import android.widget.Toast;
 
 class KakaoShareLinkModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
