@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
   s.dependency "KakaoSDKCommon", '~> 2.9.1'
-  s.dependency "KakaoSDKShare", '~> 2.9.1'
+  s.dependency "KakaoSDKLink", '~> 2.9.1'
   s.dependency "KakaoSDKTemplate", '~> 2.9.1'
 end
